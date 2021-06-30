@@ -5,7 +5,7 @@ informations : name of chromosome, position of gene, frequence of gene, name of 
 
 ### Modification of paths
 input_path = ""
-out_path = ""
+output_path = ""
 
 def read_write(path, output_path):
     ### Openning input path -> vcf file with all informations
@@ -20,7 +20,7 @@ def read_write(path, output_path):
     out_path.write("chromosome_name,position_place,frequence,name_gene" + "\n")
 
     for line in file :
-        if "##" not in line : ##to avoid the first line with description of file (all description's line strated by "##")
+        if not line.startswith('#') : ##to avoid the first line with description of file (all description's line strated by "##")
             line = line.replace("\n", "")
             line_to_read = line.split("\t")
             chromosome_name = line_to_read[0]
